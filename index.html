@@ -3,89 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudyNet | CSIR NET Life Science</title>
-  <meta name="description" content="StudyNet — CSIR NET Life Science lectures">
+  <title>StudyNet — CSIR NET Life Science</title>
+  <meta name="description" content="Straightforward learning. No distractions. Just study. Focused lecture platform for CSIR NET Life Sciences.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-mark">S</div>
-      <div>
-        <div class="brand-name">StudyNet</div>
-        <div class="brand-subtitle">CSIR NET LIFE SCIENCE</div>
-      </div>
+
+  <!-- Site Navigation -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" onclick="navigateTo('home')">
+        <span class="brand-title">StudyNet</span>
+        <span class="brand-badge">CSIR NET LIFE SCIENCE</span>
+      </a>
+      
+      <nav class="nav" id="main-nav">
+        <button class="nav-link active" data-target="home" onclick="navigateTo('home')">Home</button>
+        <button class="nav-link" data-target="subjects" onclick="navigateTo('subjects')">Subjects</button>
+        <button class="nav-link" data-target="lectures" onclick="navigateTo('lectures')">Lectures</button>
+        <button class="nav-link" data-target="about" onclick="navigateTo('about')">About</button>
+      </nav>
     </div>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
   </header>
 
-  <div class="layout">
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-title">COURSE CONTENT</div>
-      <button class="subject active">🧪 Biochemistry</button>
-      <button class="subject">🧬 Molecular Biology <span>Coming soon</span></button>
-      <button class="subject">🧫 Cell Biology <span>Coming soon</span></button>
-      <button class="subject">🧬 Genetics <span>Coming soon</span></button>
-      <button class="subject">🌱 Plant Physiology <span>Coming soon</span></button>
-      <button class="subject">🧠 Animal Physiology <span>Coming soon</span></button>
-    </aside>
+  <!-- Main Content Areas (SPA Views) -->
+  <main class="main-content">
+    
+    <!-- VIEW: HOME -->
+    <section id="view-home" class="view active">
+      <div class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <div class="hero-text">
+            <span class="eyebrow">Academic Portal</span>
+            <h1 class="hero-headline">Study smarter.<br>Master the NET.</h1>
+            <p class="hero-subtext">A focused learning space for CSIR NET Life Science lectures, organized topic by topic.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="navigateTo('subjects')">Explore Course</button>
+              <button class="btn btn-ghost" onclick="playLecture('lec-01')">Start Lecture 01</button>
+            </div>
+          </div>
 
-    <main class="main">
-      <div class="breadcrumb">CSIR NET LIFE SCIENCE <span>›</span> BIOCHEMISTRY</div>
+          <!-- Continue Learning Card -->
+          <div class="continue-card" onclick="playLecture('lec-01')">
+            <div class="continue-header">
+              <span class="pulse-indicator"></span>
+              <span class="continue-tag">LATEST LECTURE</span>
+            </div>
+            <div class="continue-body">
+              <span class="subject-pill">Biochemistry</span>
+              <h3 class="continue-title">Lecture 01 — Amino Acid Chemistry</h3>
+              <p class="continue-desc">Structure, zwitterionic properties, classification, and titration curves essential for Unit 1.</p>
+            </div>
+            <div class="continue-footer">
+              <span class="btn-text">Watch Now &rarr;</span>
+            </div>
+          </div>
+        </section>
 
-      <section class="hero">
-        <div>
-          <p class="eyebrow">STUDYNET LECTURES</p>
-          <h1>Biochemistry</h1>
-          <p class="hero-text">Watch your CSIR NET Life Science lectures in one place.</p>
+        <!-- Quick Subject Library -->
+        <section class="section-block">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Course Modules</h2>
+              <p class="section-desc">Core syllabus breakdown according to the CSIR NET guidelines.</p>
+            </div>
+            <button class="link-btn" onclick="navigateTo('subjects')">View All Modules &rarr;</button>
+          </div>
+          <div class="subject-grid" id="home-subject-grid"></div>
+        </section>
+
+        <!-- Recent Lectures Shelf -->
+        <section class="section-block">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Recent Lectures</h2>
+              <p class="section-desc">Recently published high-yield lectures.</p>
+            </div>
+          </div>
+          <div class="lecture-list" id="home-recent-lectures"></div>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- VIEW: SUBJECTS -->
+    <section id="view-subjects" class="view">
+      <div class="container">
+        <div class="view-header">
+          <span class="eyebrow">Curriculum Directory</span>
+          <h1 class="view-title">Subjects & Units</h1>
+          <p class="view-desc">Select a module to view structured chapters and individual video lectures.</p>
         </div>
-      </section>
 
-      <section class="watch-grid">
-        <div class="video-card">
-          <div class="video-wrap">
-            <iframe
-              id="videoFrame"
-              src="https://www.youtube.com/embed/NobJaXZ3-1o?rel=0&modestbranding=1"
-              title="Biochemistry 01 Amino Acid Chemistry"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        <div class="subject-grid detailed-grid" id="full-subject-grid"></div>
+      </div>
+    </section>
+
+    <!-- VIEW: LECTURES DIRECTORY -->
+    <section id="view-lectures" class="view">
+      <div class="container">
+        <div class="view-header">
+          <span class="eyebrow">Index</span>
+          <h1 class="view-title">All Lectures</h1>
+          <p class="view-desc">A straightforward list of all published lectures across active modules.</p>
+        </div>
+
+        <div class="lecture-list" id="all-lectures-list"></div>
+      </div>
+    </section>
+
+    <!-- VIEW: ABOUT & PHILOSOPHY -->
+    <section id="view-about" class="view">
+      <div class="container container-narrow">
+        <div class="view-header">
+          <span class="eyebrow">Core Manifesto</span>
+          <h1 class="view-title">Straightforward learning.<br>No distractions. Just study.</h1>
+        </div>
+
+        <div class="prose-content">
+          <p>
+            CSIR NET Life Science preparation is notorious for information overload. Students are frequently lost inside algorithm-driven social feeds, endless marketing notifications, and chaotic comment sections.
+          </p>
+          <p>
+            <strong>StudyNet</strong> strips away every single distraction. No comment wars, no algorithm rabbit holes, no popups, and no cluttered dashboards. Just a high-resolution, systematically sequenced study interface designed to build deep conceptual clarity in life sciences.
+          </p>
+          
+          <div class="framework-card">
+            <h3>The StudyNet Flow</h3>
+            <ul>
+              <li><strong>01. Choose Subject:</strong> Access clear, unit-aligned modules.</li>
+              <li><strong>02. Choose Topic:</strong> Target high-yield core concepts.</li>
+              <li><strong>03. Watch & Master:</strong> High-yield lecture notes with distraction-free playback.</li>
+              <li><strong>04. Seamless Progression:</strong> Advance to the next sequential lecture instantly.</li>
+            </ul>
+          </div>
+
+          <div class="architecture-note">
+            <span class="mono-label">PLANNED INFRASTRUCTURE</span>
+            <p>StudyNet’s roadmap includes high-yield revision PDF notes, Part B/C MCQ practice modules, self-contained mock tests, and authenticated student profiles. The focus will always remain speed, clarity, and zero cognitive load.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: WATCH PLAYER -->
+    <section id="view-player" class="view">
+      <div class="container-fluid player-layout">
+        
+        <!-- Main Theater Column -->
+        <div class="player-main">
+          
+          <!-- Distraction-free Back navigation -->
+          <div class="player-topbar">
+            <button class="back-link" onclick="navigateTo('subjects')">&larr; Back to Subjects</button>
+            <div class="player-meta-badges">
+              <span id="player-subject-pill" class="subject-pill">Subject</span>
+              <span id="player-chapter-pill" class="chapter-pill">Topic</span>
+            </div>
+          </div>
+
+          <!-- Responsive 16:9 Video Container -->
+          <div class="video-container">
+            <iframe 
+              id="player-iframe"
+              src="" 
+              title="StudyNet Video Player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               allowfullscreen>
             </iframe>
           </div>
-          <div class="video-info">
-            <div class="lecture-tag">LECTURE 01</div>
-            <h2 id="videoTitle">Amino Acid Chemistry</h2>
-            <p id="videoDescription">Biochemistry — Amino Acid Chemistry</p>
-            <div class="nav-buttons">
-              <button class="nav-btn disabled" id="prevBtn">← Previous</button>
-              <button class="nav-btn" id="nextBtn">Next →</button>
+
+          <!-- Video Details & Lecture Controls -->
+          <div class="player-details">
+            <div class="player-info">
+              <span id="player-lec-number" class="player-lec-number">Lecture 01</span>
+              <h1 id="player-lec-title" class="player-lec-title">Loading Lecture...</h1>
+              <p id="player-lec-description" class="player-lec-description"></p>
+            </div>
+
+            <!-- Sequence Pagination Controls -->
+            <div class="player-nav-controls">
+              <button id="btn-prev-lecture" class="btn btn-secondary" onclick="navigateLecture(-1)">
+                &larr; Previous Lecture
+              </button>
+              <button id="btn-next-lecture" class="btn btn-secondary" onclick="navigateLecture(1)">
+                Next Lecture &rarr;
+              </button>
             </div>
           </div>
+
         </div>
 
-        <aside class="lecture-panel">
-          <div class="panel-head">
-            <div>
-              <div class="panel-label">BIOCHEMISTRY</div>
-              <h3>Lectures</h3>
-            </div>
-            <span class="count" id="lectureCount">1</span>
+        <!-- Sidebar / Playlist Column -->
+        <aside class="player-sidebar">
+          <div class="sidebar-header">
+            <h3 class="sidebar-title">Curriculum Index</h3>
+            <span class="sidebar-counter" id="sidebar-counter">1 Lecture</span>
           </div>
-          <div class="lecture-list" id="lectureList"></div>
+          <div class="sidebar-body" id="player-playlist"></div>
         </aside>
-      </section>
 
-      <section class="notice">
-        <span>📚</span>
-        <div>
-          <strong>StudyNet</strong>
-          <p>More CSIR NET Life Science lectures will be added here.</p>
-        </div>
-      </section>
-    </main>
-  </div>
+      </div>
+    </section>
 
-  <footer>© 2026 StudyNet · CSIR NET Life Science</footer>
-  <script src="script.js"></script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="footer-logo">StudyNet</span>
+        <p class="footer-tagline">Straightforward learning. No distractions. Just study.</p>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-copy">&copy; StudyNet. CSIR NET Life Sciences.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
