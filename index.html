@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyNet | CSIR NET Life Science</title>
+  <meta name="description" content="StudyNet — CSIR NET Life Science lectures">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div>
+        <div class="brand-name">StudyNet</div>
+        <div class="brand-subtitle">CSIR NET LIFE SCIENCE</div>
+      </div>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-title">COURSE CONTENT</div>
+      <button class="subject active">🧪 Biochemistry</button>
+      <button class="subject">🧬 Molecular Biology <span>Coming soon</span></button>
+      <button class="subject">🧫 Cell Biology <span>Coming soon</span></button>
+      <button class="subject">🧬 Genetics <span>Coming soon</span></button>
+      <button class="subject">🌱 Plant Physiology <span>Coming soon</span></button>
+      <button class="subject">🧠 Animal Physiology <span>Coming soon</span></button>
+    </aside>
+
+    <main class="main">
+      <div class="breadcrumb">CSIR NET LIFE SCIENCE <span>›</span> BIOCHEMISTRY</div>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">STUDYNET LECTURES</p>
+          <h1>Biochemistry</h1>
+          <p class="hero-text">Watch your CSIR NET Life Science lectures in one place.</p>
+        </div>
+      </section>
+
+      <section class="watch-grid">
+        <div class="video-card">
+          <div class="video-wrap">
+            <iframe
+              id="videoFrame"
+              src="https://www.youtube.com/embed/NobJaXZ3-1o?rel=0&modestbranding=1"
+              title="Biochemistry 01 Amino Acid Chemistry"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="video-info">
+            <div class="lecture-tag">LECTURE 01</div>
+            <h2 id="videoTitle">Amino Acid Chemistry</h2>
+            <p id="videoDescription">Biochemistry — Amino Acid Chemistry</p>
+            <div class="nav-buttons">
+              <button class="nav-btn disabled" id="prevBtn">← Previous</button>
+              <button class="nav-btn" id="nextBtn">Next →</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="lecture-panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-label">BIOCHEMISTRY</div>
+              <h3>Lectures</h3>
+            </div>
+            <span class="count" id="lectureCount">1</span>
+          </div>
+          <div class="lecture-list" id="lectureList"></div>
+        </aside>
+      </section>
+
+      <section class="notice">
+        <span>📚</span>
+        <div>
+          <strong>StudyNet</strong>
+          <p>More CSIR NET Life Science lectures will be added here.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>© 2026 StudyNet · CSIR NET Life Science</footer>
+  <script src="script.js"></script>
+</body>
+</html>

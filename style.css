@@ -1,0 +1,117 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #172033;
+  --muted: #6b7280;
+  --line: #e6e9ef;
+  --accent: #315efb;
+  --accent-soft: #eef2ff;
+  --sidebar: #101827;
+}
+html, body { margin: 0; min-height: 100%; }
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+button { font: inherit; }
+.topbar {
+  height: 72px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 11px;
+  background: var(--accent); color: white;
+  display: grid; place-items: center; font-weight: 800; font-size: 20px;
+}
+.brand-name { font-weight: 800; font-size: 18px; letter-spacing: -.02em; }
+.brand-subtitle { color: var(--muted); font-size: 10px; letter-spacing: .11em; margin-top: 2px; }
+.menu-btn { display: none; border: 0; background: transparent; font-size: 24px; cursor: pointer; }
+.layout { display: flex; min-height: calc(100vh - 72px); }
+.sidebar {
+  width: 270px; background: var(--sidebar); color: white;
+  padding: 28px 16px; flex-shrink: 0;
+}
+.sidebar-title {
+  font-size: 10px; letter-spacing: .13em; color: #9ca7b8;
+  padding: 0 12px 12px; font-weight: 700;
+}
+.subject {
+  width: 100%; text-align: left; border: 0; border-radius: 10px;
+  padding: 12px; margin: 2px 0; color: #d8dfeb; background: transparent;
+  cursor: pointer; font-size: 14px; display: flex; justify-content: space-between; gap: 8px;
+}
+.subject:hover, .subject.active { background: #1d2940; color: white; }
+.subject span { color: #8290a6; font-size: 10px; align-self: center; }
+.main { width: min(1400px, 100%); padding: 30px; margin: 0 auto; }
+.breadcrumb { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+.breadcrumb span { padding: 0 7px; color: #a8afbc; }
+.hero { padding: 26px 0 22px; }
+.eyebrow { color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .13em; margin: 0 0 7px; }
+h1 { font-size: clamp(28px, 4vw, 42px); margin: 0; letter-spacing: -.04em; }
+.hero-text { color: var(--muted); margin: 8px 0 0; }
+.watch-grid { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 22px; align-items: start; }
+.video-card, .lecture-panel, .notice { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.video-wrap { background: #000; aspect-ratio: 16 / 9; }
+.video-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+.video-info { padding: 20px 22px 22px; }
+.lecture-tag, .panel-label { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.video-info h2 { font-size: 24px; margin: 6px 0 5px; letter-spacing: -.03em; }
+.video-info p { margin: 0; color: var(--muted); }
+.nav-buttons { display: flex; gap: 10px; margin-top: 20px; }
+.nav-btn {
+  border: 1px solid var(--line); background: white; border-radius: 9px;
+  padding: 9px 13px; cursor: pointer; font-weight: 700; color: var(--text);
+}
+.nav-btn:hover:not(.disabled) { border-color: #bcc7df; background: #f8f9fc; }
+.nav-btn.disabled { opacity: .4; cursor: not-allowed; }
+.lecture-panel { padding-bottom: 8px; }
+.panel-head { padding: 18px 18px 14px; border-bottom: 1px solid var(--line); display: flex; align-items: end; justify-content: space-between; }
+.panel-head h3 { margin: 3px 0 0; font-size: 20px; }
+.count { background: var(--accent-soft); color: var(--accent); border-radius: 99px; padding: 4px 9px; font-size: 11px; font-weight: 800; }
+.lecture-list { padding: 8px; }
+.lecture-item {
+  width: 100%; text-align: left; border: 0; background: transparent; border-radius: 10px;
+  padding: 12px; display: flex; gap: 11px; cursor: pointer; color: var(--text);
+}
+.lecture-item:hover { background: #f6f7fb; }
+.lecture-item.active { background: var(--accent-soft); }
+.lecture-number {
+  width: 31px; height: 31px; flex: 0 0 31px; border-radius: 8px;
+  background: #eef0f5; display: grid; place-items: center; font-size: 11px; font-weight: 800;
+}
+.lecture-item.active .lecture-number { background: var(--accent); color: white; }
+.lecture-name { font-weight: 700; font-size: 13px; line-height: 1.35; }
+.lecture-meta { color: var(--muted); font-size: 11px; margin-top: 3px; }
+.notice { margin-top: 22px; padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start; }
+.notice p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+footer { text-align: center; color: #8a93a3; font-size: 11px; padding: 28px; }
+
+@media (max-width: 900px) {
+  .menu-btn { display: block; }
+  .layout { position: relative; }
+  .sidebar {
+    position: fixed; left: 0; top: 72px; bottom: 0; z-index: 15;
+    transform: translateX(-100%); transition: transform .2s ease;
+    box-shadow: 8px 0 24px rgba(0,0,0,.12);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .watch-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .topbar { padding: 0 16px; }
+  .main { padding: 20px 14px; }
+  .hero { padding: 20px 0 18px; }
+  .video-info { padding: 17px; }
+  .video-info h2 { font-size: 20px; }
+}
